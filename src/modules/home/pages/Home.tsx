@@ -1,11 +1,17 @@
 import React, { FC } from 'react';
 import Layout from "@/common/components/layout/Layout";
+import Banner from "@/modules/home/banner/Banner";
+import {Movie} from "@/@types/typings";
 
-const Home: FC = () => {
+interface IHomeProps {
+  netflixOriginals: Movie[]
+}
+
+const Home: FC<IHomeProps> = ({netflixOriginals}) => {
 
   return (
-    <Layout title='Home'>
-      <h1>home</h1>
+    <Layout title='Home' description='Home page description'>
+      <Banner netflixOriginals={netflixOriginals} />
     </Layout>
   );
 };

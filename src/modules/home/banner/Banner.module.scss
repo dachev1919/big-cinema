@@ -1,0 +1,57 @@
+.banner {
+  @apply flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] justify-end lg:pb-12 min-h-[20rem] md:min-h-[30rem] lg:min-h-[35rem];
+  .image {
+    @apply absolute top-0 left-0 h-[95vh] w-screen max-w-full;
+    img {
+      @apply transition-all object-cover min-h-[100vh];
+      opacity: 0;
+      animation: ease 1s imageVisible forwards;
+    }
+  }
+  .title {
+    @apply relative text-2xl md:text-4xl lg:text-7xl font-bold w-3/4;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0, .5);
+  }
+  .text {
+    @apply relative max-w-xs text-xs md:max-w-lg md:text-lg lg:max-w-2xl lg:text-2xl;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0, .5);
+  }
+  .buttons {
+    @apply flex items-center gap-4;
+    .button {
+      @apply relative flex gap-x-2 items-center rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:text-xl;
+      &.primary {
+        @apply bg-white text-black;
+        .icon {
+          @apply text-black;
+        }
+      }
+      &.secondary {
+        @apply bg-gray-600/70;
+        .icon {
+          @apply text-white;
+        }
+      }
+    }
+    .icon {
+      @apply h-4 w-4 md:h-7 md:w-7;
+    }
+  }
+}
+
+@keyframes imageVisible {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes imageHidden {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
