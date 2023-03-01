@@ -1,0 +1,6 @@
+.menu {
+  @apply hidden space-x-4 md:flex;
+  .link {
+    @apply text-[#e5e5e5] cursor-pointer text-sm font-light transition duration-[.4s] hover:text-[#b3b3b3];
+  }
+}
