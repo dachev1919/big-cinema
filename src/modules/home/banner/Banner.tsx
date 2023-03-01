@@ -1,38 +1,56 @@
-import {FC, useEffect, useState} from 'react';
-import Image from "next/image";
-import {Movie} from "@/@types/typings";
-import {baseUrl} from "@/constants/movie";
+import { FC, useEffect, useState } from 'react';
+import Image from 'next/image';
+import { Movie } from '@/@types/typings';
+import { baseUrl } from '@/constants/movie-url';
 import styles from './Banner.module.scss';
-import {FaPlay} from "react-icons/fa";
-import {InformationCircleIcon} from "@heroicons/react/solid";
+import { FaPlay } from 'react-icons/fa';
+import { InformationCircleIcon } from '@heroicons/react/solid';
 
 interface IBannerProps {
-  netflixOriginals: Movie[];
+	netflixOriginals: Movie[];
 }
 
-const Banner: FC<IBannerProps> = ({netflixOriginals}) => {
-  const [movie, setMovie] = useState<Movie | null>(null);
+const Banner: FC<IBannerProps> = ({ netflixOriginals }) => {
+	const [movie, setMovie] = useState<Movie | null>(null);
 
-  useEffect(() => {
-    setMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]);
-    setInterval(() => {
-      setMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]);
-    }, 10000);
-  }, [netflixOriginals]);
-  return (
-    <div className={styles.banner}>
-      <div className={styles.image}>
-        {movie?.backdrop_path || movie?.poster_path ? (<Image width={1920} height={1080} src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`} alt={movie?.title || 'film image'} />) : ''}
-
-      </div>
-      <h1 className={styles.title}>{movie?.title || movie?.name || movie?.original_name}</h1>
-      <p className={styles.text}>{movie?.overview}</p>
-      <div className={styles.buttons}>
-        <button className={`${styles.button} ${styles.primary}`}><FaPlay className={styles.icon} /> Play</button>
-        <button className={`${styles.button} ${styles.secondary}`}>More Info <InformationCircleIcon className={styles.icon} /></button>
-      </div>
-    </div>
-  );
+	useEffect(() => {
+		setMovie(
+			netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
+		);
+		setInterval(() => {
+			setMovie(
+				netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
+			);
+		}, 10000);
+	}, [netflixOriginals]);
+	return (
+		<div className={styles.banner}>
+			<div className={styles.image}>
+				{movie?.backdrop_path || movie?.poster_path ? (
+					<Image
+						width={1920}
+						height={1080}
+						src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
+						alt={movie?.title || 'film image'}
+					/>
+				) : (
+					''
+				)}
+			</div>
+			<h1 className={styles.title}>
+				{movie?.title || movie?.name || movie?.original_name}
+			</h1>
+			<p className={styles.text}>{movie?.overview}</p>
+			<div className={styles.buttons}>
+				<button className={`${styles.button} ${styles.primary}`}>
+					<FaPlay className={styles.icon} /> Play
+				</button>
+				<button className={`${styles.button} ${styles.secondary}`}>
+					More Info <InformationCircleIcon className={styles.icon} />
+				</button>
+			</div>
+		</div>
+	);
 };
 
 export default Banner;

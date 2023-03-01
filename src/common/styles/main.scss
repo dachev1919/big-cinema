@@ -9,6 +9,6 @@
     font-family: 'Roboto', sans-serif;
   }
   body {
-    @apply bg-[#141414] text-white;
+    @apply bg-[#141414] text-white scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-600;
   }
 }

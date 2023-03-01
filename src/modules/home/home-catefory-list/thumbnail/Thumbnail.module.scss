@@ -1,0 +1,6 @@
+.thumbnail {
+  @apply relative h-auto min-w-[11.25rem] cursor-pointer  md:min-w-[15rem] rounded-sm overflow-hidden;
+  img {
+    @apply object-cover md:hover:scale-125 transition duration-[2000ms] ease-out h-auto w-auto;
+  }
+}

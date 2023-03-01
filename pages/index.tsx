@@ -14,17 +14,17 @@ interface IHomePageProps {
   documentariesMovies: Movie[],
 }
 
-const HomePage: NextPage<IHomePageProps> = ({
-  netflixOriginals,
-  trendingNow,
-  topRated,
-  actionMovies,
-  comedyMovies,
-  horrorMovies,
-  romanceMovies,
-  documentariesMovies
-}) => {
-  return <Home netflixOriginals={netflixOriginals}/>;
+const HomePage: NextPage<IHomePageProps> = (props) => {
+  return <Home
+    trendingNow={props.trendingNow}
+    topRated={props.topRated}
+    actionMovies={props.actionMovies}
+    comedyMovies={props.comedyMovies}
+    netflixOriginals={props.netflixOriginals}
+    horrorMovies={props.horrorMovies}
+    romanceMovies={props.romanceMovies}
+    documentariesMovies={props.documentariesMovies}
+  />;
 };
 
 export default HomePage;
