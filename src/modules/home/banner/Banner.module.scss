@@ -8,7 +8,7 @@
       @apply bg-gradient-to-b absolute w-full h-full -bottom-[30%];
     }
     img {
-      @apply transition-all object-cover min-h-[130%];
+      @apply transition-all object-cover max-h-[130%] min-h-[130%];
       opacity: 0;
       animation: ease 1s imageVisible forwards;
     }
