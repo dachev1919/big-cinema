@@ -1,0 +1,6 @@
+.login {
+  @apply relative flex h-screen w-screen flex-col bg-black md:items-center md:justify-center md:bg-transparent w-full;
+  .banner {
+    @apply object-cover opacity-60 hidden w-full max-w-full min-h-full md:inline absolute left-0 top-0 max-h-full;
+  }
+}

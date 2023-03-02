@@ -8,9 +8,12 @@ import kids from '@/common/assets/images/kids.png';
 import styles from './Header.module.scss';
 
 
-interface IHeaderProps {}
+interface IHeaderProps {
+  menuHidden?: boolean;
+  accountHidden?: boolean;
+}
 
-const Header: FunctionComponent<IHeaderProps> = () => {
+const Header: FunctionComponent<IHeaderProps> = ({menuHidden = false, accountHidden = false}) => {
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -29,13 +32,16 @@ const Header: FunctionComponent<IHeaderProps> = () => {
     };
   }, []);
 
+
   return (
     <header className={`${styles.header}${isSticky ? ' bg-[#141414]' : ''}`}>
       <div className={styles.left}>
         <Image className='cursor-pointer object-contain' src={logo} width={87} height={30} alt='logo'/>
-        <HeaderMenu />
+        <div className={`${menuHidden ? '!hidden' : ''}`}>
+          <HeaderMenu />
+        </div>
       </div>
-      <div className={styles.right}>
+      <div className={`${styles.right} ${accountHidden ? '!hidden' : ''}`}>
         <SearchIcon className='hidden sm:inline h-6 w-6'/>
         <p className='hidden lg:inline'>Kids</p>
         <BellIcon className='h-6 w-6'/>
