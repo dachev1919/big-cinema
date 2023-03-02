@@ -1,6 +1,28 @@
-.thumbnail {
-  @apply relative h-auto min-w-[11.25rem] cursor-pointer  md:min-w-[15rem] rounded-sm overflow-hidden;
-  img {
-    @apply object-cover md:hover:scale-125 transition duration-[2000ms] ease-out h-auto w-auto;
+
+
+
+.thumbnails {
+  @apply flex items-center  overflow-x-scroll gap-2 md:p-0 scrollbar-hide;
+  .thumbnail {
+    @apply relative h-auto min-w-[11.25rem] cursor-pointer  md:min-w-[15rem] rounded-sm overflow-hidden max-h-[135px] overflow-hidden;
+    img {
+      @apply object-cover md:hover:scale-125 transition duration-[2000ms] ease-out h-auto w-auto;
+    }
+  }
+  &:hover {
+    .left,
+    .right {
+      @apply opacity-100;
+    }
+  }
+  .left,
+  .right {
+    @apply absolute top-[50%] translate-y-[-50%] bottom-0 z-40 w-9 h-9 cursor-pointer transition hover:opacity-50 md:opacity-0;
+  }
+  .left{
+    @apply left-2;
+  }
+  .right{
+    @apply right-2;
   }
 }
