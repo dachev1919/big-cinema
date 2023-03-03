@@ -2,7 +2,7 @@ import { FunctionComponent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import logo from '@/common/assets/images/logo.png';
 import HeaderMenu from '@/common/components/layout/header/header-menu/HeaderMenu';
-import { BellIcon, SearchIcon } from '@heroicons/react/solid';
+import { BellIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
 import kids from '@/common/assets/images/kids.png';
 import styles from './Header.module.scss';
@@ -63,7 +63,6 @@ const Header: FunctionComponent<IHeaderProps> = ({
 				</button>
 			) : (
 				<div className={`${styles.right} ${accountHidden ? '!hidden' : ''}`}>
-					<SearchIcon className='hidden sm:inline h-6 w-6' />
 					<Link href='/plans' className='text-[#e50914] font-bold'>Plans</Link>
 					<BellIcon className='h-6 w-6' />
 					<Link href='/account'>

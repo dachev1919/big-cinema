@@ -1,0 +1,24 @@
+.membership {
+  @apply mt-6 grid grid-cols-1 gap-x-4 border px-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0;
+  h4 {
+    @apply text-lg text-[gray];
+  }
+  .canceling {
+    @apply space-y-2 py-4;
+    .cancel {
+      @apply h-10 w-4/5 whitespace-nowrap bg-gray-300 py-2 text-sm font-medium text-black shadow-md hover:bg-gray-200 md:w-full;
+    }
+  }
+  .info {
+    @apply col-span-3;
+    .user {
+      @apply flex flex-col justify-between border-b border-white/10 py-4 md:flex-row;
+    }
+    .end {
+      @apply flex flex-col justify-between pt-4 pb-4 md:flex-row md:pb-0;
+    }
+  }
+  .link {
+    @apply cursor-pointer text-blue-500 hover:underline;
+  }
+}
