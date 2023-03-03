@@ -6,6 +6,7 @@ import {BellIcon, SearchIcon} from "@heroicons/react/solid";
 import Link from 'next/link';
 import kids from '@/common/assets/images/kids.png';
 import styles from './Header.module.scss';
+import useAuth from "@/hooks/useAuth";
 
 
 interface IHeaderProps {
@@ -15,6 +16,7 @@ interface IHeaderProps {
 
 const Header: FunctionComponent<IHeaderProps> = ({menuHidden = false, accountHidden = false}) => {
   const [isSticky, setIsSticky] = useState(false);
+  const {logout} = useAuth();
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -36,7 +38,7 @@ const Header: FunctionComponent<IHeaderProps> = ({menuHidden = false, accountHid
   return (
     <header className={`${styles.header}${isSticky ? ' bg-[#141414]' : ''}`}>
       <div className={styles.left}>
-        <Image className='cursor-pointer object-contain' src={logo} width={87} height={30} alt='logo'/>
+        <Link href='/'><Image className='cursor-pointer object-contain' src={logo} width={87} height={30} alt='logo'/></Link>
         <div className={`${menuHidden ? '!hidden' : ''}`}>
           <HeaderMenu />
         </div>

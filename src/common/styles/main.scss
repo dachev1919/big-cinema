@@ -38,5 +38,8 @@
     &-footer {
       @apply text-[gray] flex gap-4 justify-center;
     }
+    &-error {
+      @apply p-1 text-[.9rem] font-light text-orange-500;
+    }
   }
 }

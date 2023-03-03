@@ -4,6 +4,7 @@ import Image from 'next/image';
 import loginBanner from '@/common/assets/images/login-banner.png';
 import styles from './Login.module.scss';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import useAuth from "@/hooks/useAuth";
 
 interface Inputs {
 	email: string;
@@ -14,6 +15,7 @@ interface ILoginProps {}
 
 const Login: FC<ILoginProps> = () => {
 	const [login, setLogin] = useState(false);
+	const {signUp, signIn} = useAuth();
 
 	const {
 		register,
@@ -22,7 +24,13 @@ const Login: FC<ILoginProps> = () => {
 		formState: { errors }
 	} = useForm<Inputs>();
 
-	const onSubmitHandler: SubmitHandler<Inputs> = data => console.log(data);
+	const onSubmitHandler: SubmitHandler<Inputs> = async ({email, password}) => {
+		if (login) {
+			await signIn(email, password);
+		} else {
+			await signUp(email, password);
+		}
+	}
 
 	return (
 		<Layout
@@ -51,6 +59,9 @@ const Login: FC<ILoginProps> = () => {
 								className='form-input'
 								{...register('email', { required: true })}
 							/>
+							{errors.email && (
+								<p className='form-error'>Please enter a valid email.</p>
+							)}
 						</label>
 						<label className='form-input-label'>
 							<input
@@ -59,14 +70,17 @@ const Login: FC<ILoginProps> = () => {
 								className='form-input'
 								{...register('password', { required: true })}
 							/>
+							{errors.password && (
+								<p className='form-error'>Your password must contain between 4 and 60 characters.</p>
+							)}
 						</label>
 					</div>
-					<button className='form-button' type='submit'>
+					<button className='form-button' onClick={() => setLogin(true)}>
 						Sign In
 					</button>
 					<div className='form-footer'>
 						New to Cinema?
-						<button className='form-button-new'>Sign up now</button>
+						<button className='form-button-new' onClick={() => setLogin(false)}>Sign up now</button>
 					</div>
 				</form>
 			</div>

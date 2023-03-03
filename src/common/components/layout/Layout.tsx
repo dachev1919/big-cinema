@@ -23,12 +23,10 @@ const Layout: FC<PropsWithChildren<ILayout>> = ({
 		<>
 			<Meta {...rest} />
 			<div
-				className={`${styles.layout} ${
-					padding ? 'pl-4 pb-24 lg:space-y-24 lg:pl-16' : ''
-				} ${heightContent ? '!h-auto' : ''}`}
+				className={`${styles.layout} ${heightContent ? '!h-auto' : ''}`}
 			>
 				<Header menuHidden={menuHidden} accountHidden={accountHidden} />
-				<main className={styles.main}>{children}</main>
+				<main className={`${styles.main} ${padding ? 'pl-4 pb-24 lg:space-y-24 lg:pl-16' : ''}`}>{children}</main>
 			</div>
 		</>
 	);
