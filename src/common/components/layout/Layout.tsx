@@ -9,6 +9,7 @@ interface ILayout extends ISeo {
 	menuHidden?: boolean;
 	accountHidden?: boolean;
 	heightContent?: boolean;
+	signOut?: boolean;
 }
 
 const Layout: FC<PropsWithChildren<ILayout>> = ({
@@ -17,16 +18,21 @@ const Layout: FC<PropsWithChildren<ILayout>> = ({
 	menuHidden = false,
 	heightContent = false,
 	accountHidden = false,
+	signOut = false,
 	...rest
 }) => {
 	return (
 		<>
 			<Meta {...rest} />
-			<div
-				className={`${styles.layout} ${heightContent ? '!h-auto' : ''}`}
-			>
-				<Header menuHidden={menuHidden} accountHidden={accountHidden} />
-				<main className={`${styles.main} ${padding ? 'pl-4 pb-24 lg:space-y-24 lg:pl-16' : ''}`}>{children}</main>
+			<div className={`${styles.layout} ${heightContent ? '!h-auto' : ''}`}>
+				<Header menuHidden={menuHidden} signOut={signOut} accountHidden={accountHidden} />
+				<main
+					className={`${styles.main} ${
+						padding ? 'pl-4 pb-24 lg:space-y-24 lg:pl-16' : ''
+					}`}
+				>
+					{children}
+				</main>
 			</div>
 		</>
 	);

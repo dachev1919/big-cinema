@@ -1,0 +1,26 @@
+.plans {
+  @apply pt-28 max-w-5xl pb-12 transition-all md:px-10 mx-auto;
+  h1 {
+    @apply mb-3 text-3xl font-medium;
+  }
+  .list {
+    li {
+      @apply flex items-center gap-x-2 text-lg;
+      svg {
+        @apply h-7 w-7 text-[#E50914];
+      }
+    }
+  }
+  .nameplates {
+    @apply mt-4 flex flex-col space-y-4;
+    .wrapper {
+      @apply flex w-full items-center justify-end self-end md:w-3/5;
+    }
+    .item {
+      @apply relative mx-1.5 flex h-20 w-[33.33%] bg-[#e50914] cursor-pointer items-center justify-center rounded-sm font-semibold shadow md:h-24 after:absolute after:top-full after:left-1/2 after:block after:-translate-x-1/2 after:border-8 after:border-b-0 after:border-transparent after:border-t-[#e50914] after:content-[''];
+    }
+  }
+  .subscribe {
+    @apply mx-auto w-7/12;
+  }
+}

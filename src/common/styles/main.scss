@@ -55,9 +55,12 @@
 			@apply w-full rounded bg-[#333] px-5 py-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
 		}
 		&-button {
-			@apply w-full rounded bg-[#e50914] py-3 font-semibold;
+			@apply w-full rounded bg-[#e50914] py-3 font-semibold transition;
 			&-new {
 				@apply text-white hover:underline;
+			}
+			&:hover {
+				@apply bg-[#a4030b];
 			}
 		}
 		&-footer {

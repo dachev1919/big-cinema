@@ -1,0 +1,11 @@
+.table {
+  .data {
+    @apply w-[33.33%] p-2.5 text-center md:w-[20%] md:p-3.5;
+  }
+  .row {
+    @apply flex flex-wrap items-center font-medium;
+  }
+  .title {
+    @apply w-full p-2.5 text-center text-sm font-normal text-white md:w-2/5 md:p-3.5 md:text-left md:text-base;
+  }
+}

@@ -1,2 +1,3 @@
-export const siteName = 'Ecommerce-coffee';
-export const titleMerge = (title: string) => `${title} | ${siteName}`;
+export const siteName = 'Cinema';
+export const titleMerge = (title: string) =>
+	`${title !== '' ? title + ' |' : ''} ${siteName}`;
