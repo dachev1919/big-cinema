@@ -5,6 +5,8 @@ import { baseUrl } from '@/constants/movie-url';
 import styles from './Banner.module.scss';
 import { FaPlay } from 'react-icons/fa';
 import { InformationCircleIcon } from '@heroicons/react/solid';
+import {useRecoilState} from "recoil";
+import {modalState, movieState} from "@/common/atoms/modalAtom";
 
 interface IBannerProps {
 	netflixOriginals: Movie[];
@@ -12,6 +14,8 @@ interface IBannerProps {
 
 const Banner: FC<IBannerProps> = ({ netflixOriginals }) => {
 	const [movie, setMovie] = useState<Movie | null>(null);
+	const [showModal, setShowModal] = useRecoilState(modalState);
+	const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
 	useEffect(() => {
 		setMovie(
@@ -42,10 +46,16 @@ const Banner: FC<IBannerProps> = ({ netflixOriginals }) => {
 			</h1>
 			<p className={styles.text}>{movie?.overview}</p>
 			<div className={styles.buttons}>
-				<button className={`${styles.button} ${styles.primary}`}>
+				<button className='playButton primary'>
 					<FaPlay className={styles.icon} /> Play
 				</button>
-				<button className={`${styles.button} ${styles.secondary}`}>
+				<button
+					className='playButton secondary'
+					onClick={() => {
+						setCurrentMovie(movie);
+						setShowModal(true);
+					}}
+				>
 					More Info <InformationCircleIcon className={styles.icon} />
 				</button>
 			</div>

@@ -1,61 +1,72 @@
-import React, {FC, useRef, useState} from 'react';
-import {Movie} from "@/@types/typings";
-import Image from "next/image";
+import React, { FC, useRef, useState } from 'react';
+import { Movie } from '@/@types/typings';
+import Image from 'next/image';
 import styles from './Thumbnail.module.scss';
-import {thumbUrl} from "@/constants/movie-url";
-import {ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/outline";
+import { thumbUrl } from '@/constants/movie-url';
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+import { useRecoilState } from 'recoil';
+import { modalState, movieState } from '@/common/atoms/modalAtom';
 
 interface IThumbnailProps {
-  // When using firebase
-  // movie: Movie | DocumentData
-  movies: Movie[];
+	// When using firebase
+	// movie: Movie | DocumentData
+	movies: Movie[];
 }
 
+const Thumbnail: FC<IThumbnailProps> = ({ movies }) => {
+	const rowRef = useRef<HTMLDivElement>(null);
+	const [isMoved, setIsMoved] = useState(false);
+	const [showModal, setShowModal] = useRecoilState(modalState);
+	const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
-const Thumbnail: FC<IThumbnailProps> = ({movies}) => {
-  const rowRef = useRef<HTMLDivElement>(null);
-  const [isMoved, setIsMoved] = useState(false);
+	// перенести в компонент thumbnails
+	const arrowClickHandler = (direction: 'left' | 'right'): void => {
+		setIsMoved(true);
 
-  // перенести в компонент thumbnails
-  const arrowClickHandler = (direction: 'left' | 'right'): void => {
-    setIsMoved(true);
+		if (rowRef.current) {
+			const { scrollLeft, clientWidth } = rowRef.current;
 
-    if (rowRef.current) {
-      const { scrollLeft, clientWidth } = rowRef.current;
+			const scrollTo =
+				direction === 'left'
+					? scrollLeft - clientWidth
+					: scrollLeft + clientWidth;
 
-      const scrollTo =
-        direction === 'left'
-          ? scrollLeft - clientWidth
-          : scrollLeft + clientWidth;
+			console.log(scrollLeft, scrollTo);
+			rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
+		}
+	};
 
-
-      console.log(scrollLeft, scrollTo);
-      rowRef.current.scrollTo({left: scrollTo, behavior: 'smooth'});
-    }
-  };
-
-  return (
-    <>
-
-      <div ref={rowRef} className={styles.thumbnails}>
-        <ChevronLeftIcon
-          className={`${styles.left} ${!isMoved && 'hidden'}`}
-          onClick={() => arrowClickHandler('left')}
-        />
-        {movies.map(movie => (
-          <div key={movie.id} className={styles.thumbnail}>
-            <Image src={`${thumbUrl}${movie.backdrop_path || movie.poster_path}`} width={260} height={144} alt='film thumbnail'/>
-          </div>
-        ))}
-        <ChevronRightIcon
-          className={styles.right}
-          onClick={() => arrowClickHandler('right')}
-        />
-      </div>
-
-    </>
-
-  );
+	return (
+		<>
+			<div ref={rowRef} className={styles.thumbnails}>
+				<ChevronLeftIcon
+					className={`${styles.left} ${!isMoved && 'hidden'}`}
+					onClick={() => arrowClickHandler('left')}
+				/>
+				{movies.map(movie => (
+					<div
+						key={movie.id}
+						className={styles.thumbnail}
+						onClick={() => {
+							setCurrentMovie(movie);
+							setShowModal(true);
+						}}
+					>
+						<Image
+							src={`${thumbUrl}${movie.backdrop_path || movie.poster_path}`}
+							width={260}
+							height={144}
+							alt='film thumbnail'
+						/>
+					</div>
+				))}
+				<ChevronRightIcon
+					className={styles.right}
+					onClick={() => arrowClickHandler('right')}
+				/>
+			</div>
+		</>
+	);
 };
 
 export default Thumbnail;

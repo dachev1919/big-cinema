@@ -23,24 +23,6 @@
   }
   .buttons {
     @apply flex items-center gap-4;
-    .button {
-      @apply relative flex gap-x-2 items-center rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:text-xl;
-      &.primary {
-        @apply bg-white text-black;
-        .icon {
-          @apply text-black;
-        }
-      }
-      &.secondary {
-        @apply bg-gray-600/70;
-        .icon {
-          @apply text-white;
-        }
-      }
-    }
-    .icon {
-      @apply h-4 w-4 md:h-7 md:w-7;
-    }
   }
 }
 

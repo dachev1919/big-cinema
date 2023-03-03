@@ -5,41 +5,66 @@
 
 //html, body, heading
 @layer base {
-  * {
-    font-family: 'Roboto', sans-serif;
-  }
-  body {
-    @apply bg-[#141414] text-white scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-600;
-  }
+	* {
+		font-family: 'Roboto', sans-serif;
+	}
+	body {
+		@apply bg-[#141414] text-white scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-600;
+	}
 }
 
 // duplicate classes
 @layer components {
-  .form {
-    @apply relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14;;
-    &-box {
-      @apply space-y-4;
-    }
-    &-title {
-      @apply text-4xl font-semibold text-center;
-    }
-    &-input-label {
-      @apply inline-block w-full;
-    }
-    &-input {
-      @apply w-full rounded bg-[#333] px-5 py-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
-    }
-    &-button {
-      @apply w-full rounded bg-[#e50914] py-3 font-semibold;
-      &-new {
-        @apply text-white hover:underline;
-      }
-    }
-    &-footer {
-      @apply text-[gray] flex gap-4 justify-center;
-    }
-    &-error {
-      @apply p-1 text-[.9rem] font-light text-orange-500;
-    }
-  }
+	.playButton {
+		@apply relative flex gap-x-2 items-center rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:text-xl;
+		&.primary {
+			@apply bg-white text-black;
+			svg,
+			.icon {
+				@apply text-black;
+			}
+		}
+		&.secondary {
+			@apply bg-gray-600/70;
+			svg,
+			.icon {
+				@apply text-white;
+			}
+		}
+		svg,
+		.icon {
+			@apply h-4 w-4 md:h-7 md:w-7;
+		}
+	}
+
+	.modalButton {
+		@apply absolute flex items-center justify-center rounded-full right-5 top-5 h-11 w-11 border-2 border-[gray] bg-[#2a2a2a]/60 cursor-pointer hover:border-white hover:bg-white hover:text-[#2a2a2a] transition;
+	}
+	.form {
+		@apply relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:max-w-md md:px-14;
+		&-box {
+			@apply space-y-4;
+		}
+		&-title {
+			@apply text-4xl font-semibold text-center;
+		}
+		&-input-label {
+			@apply inline-block w-full;
+		}
+		&-input {
+			@apply w-full rounded bg-[#333] px-5 py-3.5 placeholder-[gray] outline-none focus:bg-[#454545];
+		}
+		&-button {
+			@apply w-full rounded bg-[#e50914] py-3 font-semibold;
+			&-new {
+				@apply text-white hover:underline;
+			}
+		}
+		&-footer {
+			@apply text-[gray] flex gap-4 justify-center;
+		}
+		&-error {
+			@apply p-1 text-[.9rem] font-light text-orange-500;
+		}
+	}
 }
