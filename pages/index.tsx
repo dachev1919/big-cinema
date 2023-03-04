@@ -2,7 +2,6 @@ import { NextPage, GetStaticProps } from 'next';
 import Home from '../src/modules/home/pages/Home';
 import requests from '../src/utils/requests';
 import { Movie } from '../src/@types/typings';
-import serialize from 'serialize-javascript';
 
 interface IHomePageProps {
 	netflixOriginals: Movie[];
@@ -57,14 +56,14 @@ export const getStaticProps: GetStaticProps<
 
 	return {
 		props: {
-			netflixOriginals: JSON.parse(serialize(netflixOriginals.results)),
-			trendingNow: JSON.parse(serialize(trendingNow.results)),
-			topRated: JSON.parse(serialize(topRated.results)),
-			actionMovies: JSON.parse(serialize(actionMovies.results)),
-			comedyMovies: JSON.parse(serialize(comedyMovies.results)),
-			horrorMovies: JSON.parse(serialize(horrorMovies.results)),
-			romanceMovies: JSON.parse(serialize(romanceMovies.results)),
-			documentariesMovies: JSON.parse(serialize(documentariesMovies.results))
+			netflixOriginals: netflixOriginals.results,
+			trendingNow: trendingNow.results,
+			topRated: topRated.results,
+			actionMovies: actionMovies.results,
+			comedyMovies: comedyMovies.results,
+			horrorMovies: horrorMovies.results,
+			romanceMovies: romanceMovies.results,
+			documentariesMovies: documentariesMovies.results
 		}
 	};
 };
