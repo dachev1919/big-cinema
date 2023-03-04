@@ -1,4 +1,4 @@
-import { NextPage, GetServerSideProps } from 'next';
+import { NextPage, GetStaticProps } from 'next';
 import Home from '../src/modules/home/pages/Home';
 import requests from '../src/utils/requests';
 import { Movie } from '../src/@types/typings';
@@ -31,7 +31,7 @@ const HomePage: NextPage<IHomePageProps> = props => {
 
 export default HomePage;
 
-export const getServerSideProps: GetServerSideProps<
+export const getStaticProps: GetStaticProps<
 	IHomePageProps
 > = async () => {
 	const [
