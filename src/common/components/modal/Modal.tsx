@@ -3,15 +3,12 @@ import MuiModal from '@mui/material/Modal';
 import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '@/common/atoms/modalAtom';
 import {
-	PlusIcon,
-	ThumbUpIcon,
 	VolumeOffIcon,
 	VolumeUpIcon,
 	XIcon
 } from '@heroicons/react/outline';
 import { Element, Genre } from '@/@types/typings';
 import ReactPlayer from 'react-player/lazy';
-import { FaPlay } from 'react-icons/fa';
 import styles from './Modal.module.scss';
 
 const Modal: FC = () => {
@@ -76,21 +73,12 @@ const Modal: FC = () => {
 						muted={muted}
 					/>
 					<div className={styles.control}>
-						<div className={styles.buttons}>
-							<button className={`playButton primary ${styles.play}`}>
-								<FaPlay />
-								Play
-							</button>
-							<button className='modalButton'>
-								<PlusIcon />
-							</button>
-							<button className='modalButton'>
-								<ThumbUpIcon />
-							</button>
-						</div>
 						<button className='modalButton' onClick={() => setMuted(!muted)}>
 							{muted ? <VolumeOffIcon /> : <VolumeUpIcon />}
 						</button>
+						<div className={styles.buttons}>
+						</div>
+
 					</div>
 				</div>
 				<div className={styles.info}>

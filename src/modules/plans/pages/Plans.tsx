@@ -48,6 +48,7 @@ const Plans: FC<IPlansProps> = () => {
 			padding={false}
 			signOut={true}
 			description='Plans'
+			menuHidden={true}
 		>
 			<section className={styles.plans}>
 				<h1>Choose the plan that's right for you</h1>
