@@ -1,6 +1,6 @@
 import * as process from "process";
 
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const API_KEY = '2df371a6bcba8d998e6152eb1375a2af';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const requests = {
