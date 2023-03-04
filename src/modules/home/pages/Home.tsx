@@ -7,7 +7,6 @@ import useAuth from "@/hooks/useAuth";
 import {useRecoilValue} from "recoil";
 import {modalState} from "@/common/atoms/modalAtom";
 import Modal from "@/common/components/modal/Modal";
-import Plans from "@/modules/plans/pages/Plans";
 
 interface IHomeProps {
 	netflixOriginals: Movie[];

@@ -8,8 +8,6 @@ import { useRecoilState } from 'recoil';
 import { modalState, movieState } from '@/common/atoms/modalAtom';
 
 interface IThumbnailProps {
-	// When using firebase
-	// movie: Movie | DocumentData
 	movies: Movie[];
 }
 
@@ -19,7 +17,6 @@ const Thumbnail: FC<IThumbnailProps> = ({ movies }) => {
 	const [showModal, setShowModal] = useRecoilState(modalState);
 	const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
 
-	// перенести в компонент thumbnails
 	const arrowClickHandler = (direction: 'left' | 'right'): void => {
 		setIsMoved(true);
 
@@ -31,7 +28,6 @@ const Thumbnail: FC<IThumbnailProps> = ({ movies }) => {
 					? scrollLeft - clientWidth
 					: scrollLeft + clientWidth;
 
-			console.log(scrollLeft, scrollTo);
 			rowRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
 		}
 	};
@@ -43,7 +39,7 @@ const Thumbnail: FC<IThumbnailProps> = ({ movies }) => {
 					className={`${styles.left} ${!isMoved && 'hidden'}`}
 					onClick={() => arrowClickHandler('left')}
 				/>
-				{movies.map(movie => (
+				{movies.map && movies.map(movie => (
 					<div
 						key={movie.id}
 						className={styles.thumbnail}

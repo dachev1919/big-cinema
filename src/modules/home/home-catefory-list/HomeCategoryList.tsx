@@ -4,8 +4,6 @@ import styles from './HomeList.module.scss';
 import Thumbnail from '@/modules/home/home-catefory-list/thumbnail/Thumbnail';
 
 interface IMoviesCategory {
-	// When using firebase
-	// movies: Movie[] | DocumentData[]
 	movies: Movie[];
 	title: string;
 }
