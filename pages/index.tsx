@@ -31,7 +31,7 @@ const HomePage: NextPage<IHomePageProps> = props => {
 
 export default HomePage;
 
-export const getStaticProps: GetServerSideProps<
+export const getServerSideProps: GetServerSideProps<
 	IHomePageProps
 > = async () => {
 	const [
